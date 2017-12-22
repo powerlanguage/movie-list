@@ -60,3 +60,12 @@ var movies = [
 - [ ] The post /movie route should be inserting into the db
 - [ ] Modify your front end code to only use these routes for both getting and sending data
 - [ ] All other front end functionality (i.e. search, add movie, toggle watched) should still be fully functioning
+
+# Allowable Resources
+  You may access any pages that are at the below-listed domains. You don't necessarily have to stick to only the pages listed below. Any pages at the domains listed below are okay.
+- [MDN](https://developer.mozilla.org/en-US/)
+- [ReactJS Official Website](https://reactjs.org/docs/hello-world.html)
+- [ExpressJS Official Website](https://expressjs.com/en/starter/hello-world.html)
+- [MySQL Official Website](https://dev.mysql.com/doc/refman/5.6/en/)
+- [NPM JS](https://www.npmjs.com/)
+- [Webpack JS](https://webpack.js.org/concepts/)
