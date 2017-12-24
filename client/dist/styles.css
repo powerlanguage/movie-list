@@ -1,0 +1,19 @@
+
+.movie img {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+}
+
+.movie .title {
+  display: inline;
+}
+
+.movie .watched {
+  display: inline;
+  background-color: red;
+}
+
+.movie .hide {
+  display: none;
+}
