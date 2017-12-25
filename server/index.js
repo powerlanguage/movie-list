@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const getNowPlaying = require('../lib/movieAPI.js')
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.listen(3000, function () { console.log('MovieList app listening on port 3000!') });
+
 
 var movieData = [
   {
@@ -42,3 +43,10 @@ app.post('/movie', (req, res) => {
   movieData.push(req.body);
   res.status(201).end()
 })
+
+app.get('/load', (req, res) => {
+  getNowPlaying(data => {
+    movieData = data;
+    res.send(movieData);
+  })
+});

@@ -30,4 +30,5 @@ bower_components/
 
 client/.DS_Store
 
-lib/api_key.js
+lib/api_key.jsconfig.js
+config.js
