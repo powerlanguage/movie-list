@@ -5,35 +5,15 @@ import Movie from './components/Movie.jsx';
 import Search from './components/Search.jsx'
 import AddMovie from './components/AddMovie.jsx'
 
-var movieData = [
-  {
-    title: 'Mean Girls',
-    watched: false,
-  },
-  {
-    title: 'Hackers',
-    watched: false,
-  },
-  {
-    title: 'The Grey',
-    watched: false,
-  },
-  {
-    title: 'Sunshine',
-    watched: false,
-  },
-  {
-    title: 'Ex Machina',
-    watched: false,
-  },
-];
+var http = require('http');
+var helper = require('./http-helpers.js');
 
 class MovieList extends React.Component {
   constructor() {
     super();
     this.state = {
       searchFilter: '',
-      movies: movieData,
+      movies: [],
       watchedFilter: '',
       focusedMovie: '',
     }
@@ -44,14 +24,26 @@ class MovieList extends React.Component {
     this.onMovieToggleWatched = this.onMovieToggleWatched.bind(this);
   }
 
+  componentDidMount(){
+    // move to a helper
+    helper.get('/movies', data => {
+      this.setState({movies: JSON.parse(data)});
+    })
+  }
+
   onSearch(searchParams){
     this.setState({searchFilter: searchParams.toLowerCase()})
   }
 
   onAddMovie(movieTitle){
-    const movies = this.state.movies;
-    movies.push({title: movieTitle});
-    this.setState({movies: movies});
+    // should trigger a state refresh somehow
+    // currently the callback is made from the res.end()
+    // in helpers. super shitty
+    helper.post('/movie', {title: movieTitle}, () => {
+      helper.get('/movies', data => {
+        this.setState({movies: JSON.parse(data)});
+      })
+    });
   }
 
   toggleWatchedFilter(filter) {
