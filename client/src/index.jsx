@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Movie from './components/Movie.jsx';
 import Search from './components/Search.jsx';
-import AddMovie from './components/AddMovie.jsx';
+import AddMovie from './components/AddMovie.jsx'
 
 
 class MovieList extends React.Component {

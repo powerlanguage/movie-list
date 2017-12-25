@@ -2,11 +2,13 @@
 
 - [ ] Search on change, not submit
 - [ ] Refactor filters to their own components
+- [ ] Search for movie on add
 
 ## Time
 
 - React: 4 hrs
 - Express: 2hrs (large portion on Webpack)
+- API wrangling: 1.5hrs
 
 ## React
 
@@ -31,7 +33,7 @@
 
 ## Express
 
-
+- [ ] How should you make an API query for another part of your app? (maybe more axios)
 
 ## JS
 

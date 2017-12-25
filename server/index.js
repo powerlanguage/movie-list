@@ -3,37 +3,25 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const getNowPlaying = require('../lib/movieAPI.js')
+const axios = require('axios');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.listen(3000, function () { console.log('MovieList app listening on port 3000!') });
 
 
-var movieData = [
-  {
-    title: 'Mean Girls',
-    watched: false,
-  },
-  {
-    title: 'Hackers',
-    watched: false,
-  },
-  {
-    title: 'The Grey',
-    watched: false,
-  },
-  {
-    title: 'Sunshine',
-    watched: false,
-  },
-  {
-    title: 'Ex Machina',
-    watched: false,
-  },
-];
+
+var movieData = [];
 
 app.get('/movies', (req, res) => {
-  res.send(movieData);
+  if(movieData.length === 0) {
+    // TODO: find something less brittle than hardcoding this URL
+    axios.get('http://localhost:3000/load')
+      .then(() => res.send(movieData))
+      .catch(err => console.log(err));
+  } else {
+    res.send(movieData);
+  }
 });
 
 app.post('/movie', (req, res) => {

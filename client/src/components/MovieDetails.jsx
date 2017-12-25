@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
 
+import config from '../../../config.js'
+
 class MovieDetails extends React.Component {
 
   constructor(props){
@@ -18,12 +20,11 @@ class MovieDetails extends React.Component {
   render() {
     return (
       <div className="movie-details">
-        <div><img src="" /></div>
+        <div><img src={`${config.BASE_URL}w185/${this.props.movie.poster_path}`} /></div>
         <ul>
-          <li>Year</li>
-          <li>Runtime</li>
-          <li>Metascore</li>
-          <li>imdbRating</li>
+          <li>Year: {this.props.movie.release_date.split('-')[0]}</li>
+          <li>Metascore {this.props.movie.vote_average}</li>
+          <li>{this.props.movie.overview}</li>
           <li>
             <form>
               <label>Watched</label>
