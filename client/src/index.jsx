@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
+import axios from 'axios'
 
 import Movie from './components/Movie.jsx';
 import Search from './components/Search.jsx'
 import AddMovie from './components/AddMovie.jsx'
 
-var http = require('http');
-var helper = require('./http-helpers.js');
 
 class MovieList extends React.Component {
   constructor() {
@@ -18,32 +17,39 @@ class MovieList extends React.Component {
       focusedMovie: '',
     }
     this.onSearch = this.onSearch.bind(this);
-    this.onAddMovie = this.onAddMovie.bind(this);
+    this.addMovie = this.addMovie.bind(this);
     this.toggleWatchedFilter = this.toggleWatchedFilter.bind(this);
     this.onMovieTitleClick = this.onMovieTitleClick.bind(this);
     this.onMovieToggleWatched = this.onMovieToggleWatched.bind(this);
   }
 
   componentDidMount(){
-    // move to a helper
-    helper.get('/movies', data => {
-      this.setState({movies: JSON.parse(data)});
-    })
+    this.getMovies();
   }
+
+  getMovies(){
+    axios.get('/movies')
+      .then(response => {
+        this.setState({movies: response.data});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  addMovie(movieTitle){
+    axios.post('/movie', {title: movieTitle})
+      .then(response => {
+        this.getMovies();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
 
   onSearch(searchParams){
     this.setState({searchFilter: searchParams.toLowerCase()})
-  }
-
-  onAddMovie(movieTitle){
-    // should trigger a state refresh somehow
-    // currently the callback is made from the res.end()
-    // in helpers. super shitty
-    helper.post('/movie', {title: movieTitle}, () => {
-      helper.get('/movies', data => {
-        this.setState({movies: JSON.parse(data)});
-      })
-    });
   }
 
   toggleWatchedFilter(filter) {
@@ -72,7 +78,7 @@ class MovieList extends React.Component {
 
     return (
       <div>
-        <AddMovie onAddMovie={this.onAddMovie}/>
+        <AddMovie onAddMovie={this.addMovie}/>
         <Search onSearch={this.onSearch}/>
         <div>
           <span onClick={() => this.toggleWatchedFilter("watched")}>Watched</span> |

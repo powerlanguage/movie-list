@@ -38,6 +38,7 @@ app.get('/movies', (req, res) => {
 app.post('/movie', (req, res) => {
   console.log(req.body);
   // TODO: Update saved info
+    // watched, etc
   movieData.push(req.body);
   res.status(201).end()
 })

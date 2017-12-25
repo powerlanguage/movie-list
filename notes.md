@@ -3,6 +3,10 @@
 - [ ] Search on change, not submit
 - [ ] Refactor filters to their own components
 
+## Time
+
+- React: 4 hrs
+- Express: 2hrs (large portion on Webpack)
 
 ## React
 
@@ -17,13 +21,17 @@
 - [ ] How to handle item disappearing as soon as it is filtered
 - [ ] Filtered checkbox not updating until re render? - think it is to do with a subcomponent alreadying having rendered
 
-Time Spent: 4 hrs
+## Node
+
+- [x] How to make a http POST
 
 ## Webpack
 
 - [ ] Adding node modules
 
 ## Express
+
+
 
 ## JS
 
