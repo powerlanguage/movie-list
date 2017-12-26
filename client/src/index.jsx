@@ -53,6 +53,7 @@ class MovieList extends React.Component {
   }
 
   toggleWatchedFilter(filter) {
+    console.log(filter);
     this.setState({watchedFilter: filter})
   }
 

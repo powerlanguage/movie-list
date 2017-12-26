@@ -14,6 +14,7 @@ class Filters extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log(event.target);
     event.preventDefault();
     this.setState({value: ''});
     this.props.clearFilters('');
@@ -32,9 +33,9 @@ class Filters extends React.Component {
           <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search..."/>
         </div>
         <div className="form-group">
-          <button className="filter" onClick={() => this.props.onToggleFilter("watched")}>Watched</button>
-          <button className="filter" onClick={() => this.props.onToggleFilter("unwatched")}> To Watch</button>
-          <button>Clear</button>
+          <button type="button" className="filter" onClick={() => this.props.onToggleFilter("watched")}>Watched</button>
+          <button type="button" className="filter" onClick={() => this.props.onToggleFilter("unwatched")}>To Watch</button>
+          <button type="submit">Clear</button>
         </div>
       </form>
     </div>

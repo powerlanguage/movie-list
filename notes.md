@@ -1,15 +1,17 @@
 ## TODO:
 
-- [ ] Search on change, not submit
-- [ ] Refactor filters to their own components
 - [ ] Search for movie on add
-- [ ] Make getNowPlaying a promise, so we can call directly and chain
-- [ ] Make database stuff promises, so it can be chained more easily
-- [ ] Have to make an update on watch
+- [ ] Get multiple pages of results with promise all?
+- [ ] Add indicator that filters are being applied
+- [x] Search on change, not submit
+- [x] Refactor filters to their own components
+- [x] Make getNowPlaying a promise, so we can call directly and chain
+- [x] Make database stuff promises, so it can be chained more easily
+- [x] Have to make an update on watch
 - [x] Add permance for watched state
 - [x] Use their video ID
 - [x] Make video id a unique field
-- [ ] Refactor all db queries to promises and simplify to share 1 query function
+- [x] Refactor all db queries to promises and simplify to share 1 query function
 
 ## Time
 
@@ -17,6 +19,7 @@
 - Express: 2hrs (large portion on Webpack)
 - API wrangling: 1.5hrs
 - DB and hooking it all up - 3.5hrs
+- CSS - 2.5hrs
 
 ## React
 
@@ -37,6 +40,10 @@
 
 - [x] How to make a http POST
 - [ ] Difference between require and import from
+
+- [ ] Promises wrapping promises
+- [ ] Updating client when server updates
+- [ ] What should be rendered on the server and what on the client?
 
 ## Webpack
 

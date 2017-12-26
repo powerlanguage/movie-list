@@ -49,6 +49,7 @@ body {
   display: inline-block;
   color: #009a64;
   border: 1px solid #009a64;
+  border-radius: 2px;
   padding: 2px;
   font-size: 0.8em;
   line-height: 1em;
@@ -93,6 +94,11 @@ body {
   color: #da2626;
 }
 
+
+.filters {
+  padding: 10px 20px;
+}
+
 .form-inline .form-group {
   display: inline-block;
   margin-bottom: 0;
@@ -101,47 +107,18 @@ body {
 
 .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 192px;
     vertical-align: middle;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
+    height: 31px;
+    padding: 0px 12px;
     font-size: 14px;
-    line-height: 1.42857143;
     color: #555;
     background-color: #fff;
-    background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.filters {
-  padding: 10px 20px;
-}
-
-/*.filters button,
-.filters .filter {
-    display: inline-block;
-    margin: 0 auto;
-    border: none;
-    color: #009a64;
-    background-color: #f5f8fa;
-    font-size: 1em;
-    padding: 10px;
-    cursor: pointer;
-}*/
-
-
-.filters button {
+button {
     margin-left: 3px;
     color: #333;
     background-color: #fff;
@@ -154,14 +131,18 @@ body {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
