@@ -3,9 +3,9 @@ import ReactDOM  from 'react-dom';
 import axios from 'axios';
 
 import Movie from './components/Movie.jsx';
-import Search from './components/Search.jsx';
 import AddMovie from './components/AddMovie.jsx'
-
+import Title from './components/Title.jsx'
+import Filters from './components/Filters.jsx'
 
 class MovieList extends React.Component {
   constructor() {
@@ -56,7 +56,6 @@ class MovieList extends React.Component {
   }
 
   onMovieToggleWatched(movie){
-
     // post to endpoint to update watched status
     axios.post('/watched', {id: movie.id, watched: !movie.watched})
       .then(response => {
@@ -65,11 +64,6 @@ class MovieList extends React.Component {
       .catch(err => {
         console.log(err);
       });
-
-    // const updatedMovies = this.state.movies;
-    // let i = updatedMovies.indexOf(movie);
-    // updatedMovies[i].watched = !updatedMovies[i].watched;
-    // this.setState({movies: updatedMovies});
   }
 
   onMovieTitleClick(movie) {
@@ -87,13 +81,9 @@ class MovieList extends React.Component {
 
     return (
       <div>
+        <Title />
         <AddMovie onAddMovie={this.addMovie}/>
-        <Search onSearch={this.onSearch}/>
-        <div>
-          <span onClick={() => this.toggleWatchedFilter("watched")}>Watched</span> |
-          <span onClick={() => this.toggleWatchedFilter("unwatched")}> To Watch</span> |
-          <span onClick={() => this.toggleWatchedFilter("")}> Clear</span>
-        </div>
+        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter}/>
         {filteredMovies.length ? (
           <ul>
             {filteredMovies.map((movie, index) =>
