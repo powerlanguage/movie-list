@@ -80,12 +80,12 @@ class MovieList extends React.Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <Title />
         <AddMovie onAddMovie={this.addMovie}/>
         <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter}/>
         {filteredMovies.length ? (
-          <ul>
+          <div className="movies">
             {filteredMovies.map((movie, index) =>
               <Movie
                 movie={movie}
@@ -95,9 +95,9 @@ class MovieList extends React.Component {
                 toggleWatched={this.onMovieToggleWatched}
               />
             )}
-          </ul>
+          </div>
           ) : (
-          <div>No movies match that filter</div>
+          <div className="error">No movies match that filter</div>
           )}
       </div>
     )

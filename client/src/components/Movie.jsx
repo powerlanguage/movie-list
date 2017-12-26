@@ -9,13 +9,13 @@ var Movie = (props) => {
   props.movie.watched ? classname += '' : classname += ' hide';
 
   return (
-    <li className="movie">
+    <div className="movie">
       <div className="title" onClick={() => props.onClick(props.movie)}>{props.movie.title}</div>
       <div className={classname}>Watched</div>
       {props.focusedMovieId === props.movie.id &&
         <MovieDetails movie={props.movie} toggleWatched={props.toggleWatched}/>
       }
-    </li>
+    </div>
   )
 }
 

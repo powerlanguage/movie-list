@@ -23,10 +23,12 @@ class AddMovie extends React.Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add movie title here"/>
-        <input type="submit" value="Add" />
-      </form>
+      <div className="add-movie">
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add movie title here"/>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
     )
   }
 }

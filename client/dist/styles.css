@@ -1,18 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 
-.movie img {
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #e6ecf0;
+  overflow: scroll;
+  color: #222;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.banner {
+  text-align: center;
+  background-color: #009a64;
+  color: #fff;
+  padding: 20px 0px;
+  margin: 0;
+}
+
+.add-movie {
+
+}
+
+.filters {
+
+}
+
+.movies .movie {
+  padding: 20px 20px;
+  background: #fff;
+  border-top: 1px solid #e6ecf0;
+}
+
+.movies .movie:last-child {
+  border-bottom: 1px solid #e6ecf0;
+}
+
+.movie .title {
+  cursor: pointer;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+.movie .watched {
+  margin-left: 5px;
+  display: inline-block;
+  color: #009a64;
+  border: 1px solid #009a64;
+  padding: 2px;
+  font-size: 0.8em;
+  line-height: 1em;
+  vertical-align: text-bottom;
+}
+
+.movie .watched.hide {
+  display: none;
+}
+
+.movie .movie-details {
+  display: flex;
+  margin-top: 10px;
+}
+
+.movie-details ul {
+  list-style: none;
+  margin-right: 10px;
+}
+
+.movie-details ul li {
+  padding-bottom: 10px;
+}
+
+.movie-details li.overview {
+  font-size: 0.9em;
+  font-style: italic;
+  line-height: 1.3em;
+}
+
+.movie-details img {
   height: 270px;
   width: 185px;
 }
 
-.movie .title {
-  display: inline;
+.movie-details .metadata {
 }
 
-.movie .watched {
-  display: inline;
-  background-color: red;
+.error {
+  padding: 20px 20px;
+  background: #fff;
+  color: #da2626;
 }
 
-.movie .hide {
-  display: none;
-}

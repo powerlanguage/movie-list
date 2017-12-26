@@ -20,12 +20,12 @@
 
 ## React
 
-- [ ] {} brackets and array map - doesn't work!
+- [x] {} brackets and array map - doesn't work!
 - [ ] importing and exporting components
 - [ ] React imports required in each component file
 - [ ] Forms - state and inputs
 - [ ] How to extract input from onChange event
-- [ ] extends React.Component
+- [x] extends React.Component
 - [ ] Adjacent components must be wrapped in an enclosing tag
 - [ ] Need to think through state before starting - who should handle what?
 - [ ] How to handle item disappearing as soon as it is filtered
@@ -36,6 +36,7 @@
 ## Node
 
 - [x] How to make a http POST
+- [ ] Difference between require and import from
 
 ## Webpack
 
