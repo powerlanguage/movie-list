@@ -24,9 +24,8 @@ class Search extends React.Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search..."/>
-        <input type="submit" value="x" />
       </form>
     )
   }

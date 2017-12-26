@@ -19,6 +19,7 @@ class MovieList extends React.Component {
     this.onSearch = this.onSearch.bind(this);
     this.addMovie = this.addMovie.bind(this);
     this.toggleWatchedFilter = this.toggleWatchedFilter.bind(this);
+    this.clearFilters = this.clearFilters.bind(this);
     this.onMovieTitleClick = this.onMovieTitleClick.bind(this);
     this.onMovieToggleWatched = this.onMovieToggleWatched.bind(this);
   }
@@ -55,6 +56,13 @@ class MovieList extends React.Component {
     this.setState({watchedFilter: filter})
   }
 
+  clearFilters() {
+    this.setState({
+      watchedFilter: '',
+      searchFilter: '',
+    });
+  }
+
   onMovieToggleWatched(movie){
     // post to endpoint to update watched status
     axios.post('/watched', {id: movie.id, watched: !movie.watched})
@@ -83,7 +91,7 @@ class MovieList extends React.Component {
       <div className="container">
         <Title />
         <AddMovie onAddMovie={this.addMovie}/>
-        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter}/>
+        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter} clearFilters={this.clearFilters}/>
         {filteredMovies.length ? (
           <div className="movies">
             {filteredMovies.map((movie, index) =>
