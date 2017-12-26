@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const getNowPlaying = require('../lib/movieAPI.js')
+const movieAPI = require('../lib/movieAPI.js')
 const axios = require('axios');
 const db = require('../database/index.js');
 
@@ -37,13 +37,18 @@ app.post('/watched', (req, res) => {
 });
 
 app.post('/movie', (req, res) => {
-  db.insertOne(req.body)
-    .then(() => res.status(201).end)
-    .catch(err => console.log(err));
+  movieAPI.search(req.body.title)
+    .then(results => {
+      if(results.length) {
+        db.insertOne(results[0]);
+        console.log('Added', results[0].title)
+      }
+    })
+    .catch(err => console.log(err))
 })
 
 app.get('/load', (req, res) => {
-  getNowPlaying()
+  movieAPI.nowPlaying()
     .then(movies => {
       db.insertMany(movies);
     })
