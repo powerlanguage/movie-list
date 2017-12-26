@@ -14,7 +14,7 @@ class MovieList extends React.Component {
       searchFilter: '',
       movies: [],
       watchedFilter: '',
-      focusedMovie: '',
+      focusedMovieId: '',
     }
     this.onSearch = this.onSearch.bind(this);
     this.addMovie = this.addMovie.bind(this);
@@ -47,7 +47,6 @@ class MovieList extends React.Component {
       });
   }
 
-
   onSearch(searchParams){
     this.setState({searchFilter: searchParams.toLowerCase()})
   }
@@ -57,14 +56,24 @@ class MovieList extends React.Component {
   }
 
   onMovieToggleWatched(movie){
-    const updatedMovies = this.state.movies;
-    let i = updatedMovies.indexOf(movie);
-    updatedMovies[i].watched = !updatedMovies[i].watched;
-    this.setState({movies: updatedMovies});
+
+    // post to endpoint to update watched status
+    axios.post('/watched', {id: movie.id, watched: !movie.watched})
+      .then(response => {
+        this.getMovies();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    // const updatedMovies = this.state.movies;
+    // let i = updatedMovies.indexOf(movie);
+    // updatedMovies[i].watched = !updatedMovies[i].watched;
+    // this.setState({movies: updatedMovies});
   }
 
   onMovieTitleClick(movie) {
-    this.state.focusedMovie === movie ? this.setState({focusedMovie: ''}) : this.setState({focusedMovie: movie});
+    this.state.focusedMovieId === movie.id ? this.setState({focusedMovieId: ''}) : this.setState({focusedMovieId: movie.id});
   }
 
   render() {
@@ -73,7 +82,7 @@ class MovieList extends React.Component {
     // see if we should be filtering based on watched
     if(this.state.watchedFilter) {
       const watched = this.state.watchedFilter === "watched";
-      filteredMovies = filteredMovies.filter(movie => movie.watched === watched);
+      filteredMovies = filteredMovies.filter(movie => Boolean(movie.watched) === watched );
     }
 
     return (
@@ -92,7 +101,7 @@ class MovieList extends React.Component {
                 movie={movie}
                 key={index}
                 onClick={this.onMovieTitleClick}
-                focusedMovie={this.state.focusedMovie}
+                focusedMovieId={this.state.focusedMovieId}
                 toggleWatched={this.onMovieToggleWatched}
               />
             )}

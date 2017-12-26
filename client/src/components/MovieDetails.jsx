@@ -20,10 +20,10 @@ class MovieDetails extends React.Component {
   render() {
     return (
       <div className="movie-details">
-        <div><img src={config.BASE_IMG_URL + this.props.movie.poster_path} /></div>
+        <div><img src={this.props.movie.poster_path} /></div>
         <ul>
-          <li>Year: {this.props.movie.release_date.split('-')[0]}</li>
-          <li>Metascore {this.props.movie.vote_average}</li>
+          <li>Year: {this.props.movie.year.split('-')[0]}</li>
+          <li>Vote: {this.props.movie.vote_average}</li>
           <li>{this.props.movie.overview}</li>
           <li>
             <form>
@@ -41,7 +41,5 @@ class MovieDetails extends React.Component {
     )
   }
 }
-
-
 
 module.exports = MovieDetails;

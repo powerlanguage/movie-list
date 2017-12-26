@@ -3,6 +3,13 @@
 - [ ] Search on change, not submit
 - [ ] Refactor filters to their own components
 - [ ] Search for movie on add
+- [ ] Make getNowPlaying a promise, so we can call directly and chain
+- [ ] Make database stuff promises, so it can be chained more easily
+- [ ] Have to make an update on watch
+- [x] Add permance for watched state
+- [x] Use their video ID
+- [x] Make video id a unique field
+- [ ] Refactor all db queries to promises and simplify to share 1 query function
 
 ## Time
 
@@ -33,7 +40,7 @@
 
 ## Express
 
-- [ ] How should you make an API query for another part of your app? (maybe more axios)
+- [ ] How should you make an API query for another part of your app? (maybe more an axios question)
 
 ## JS
 

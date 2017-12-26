@@ -17,17 +17,23 @@ app.listen(port, function () { console.log(`MovieList app listening on port ${po
 var movieData = [];
 
 app.get('/movies', (req, res) => {
+  db.selectAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      console.log(err)
+    });
+});
 
-  db.get(console.log);
-
-  if(!movieData.length) {
-    // TODO: find something less brittle than hardcoding this URL
-    axios.get(`${localhost}:${port}/load`)
-      .then(() => res.send(movieData))
-      .catch(err => console.log(err));
-  } else {
-    res.send(movieData);
-  }
+app.post('/watched', (req, res) => {
+  db.updateWatched(req.body.id, req.body.watched)
+    .then(() => {
+      res.status(201).end();
+    })
+    .catch(err => {
+      console.log(err);
+    })
 });
 
 app.post('/movie', (req, res) => {
@@ -41,7 +47,6 @@ app.post('/movie', (req, res) => {
 
   db.post(test);
 
-  console.log(req.body);
   // TODO: Update saved info
     // watched, etc
   movieData.push(req.body);
@@ -49,8 +54,8 @@ app.post('/movie', (req, res) => {
 })
 
 app.get('/load', (req, res) => {
-  getNowPlaying(data => {
-    movieData = data;
-    res.send(movieData);
+  getNowPlaying(movies => {
+    db.insertMany(movies);
+    res.send('data loaded');
   })
 });

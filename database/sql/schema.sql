@@ -4,12 +4,15 @@ USE movielist;
 
 CREATE TABLE movies (
 id INTEGER AUTO_INCREMENT,
+video_id INTEGER,
 title TEXT,
-year DATE,
 overview TEXT,
+year DATE,
 poster_path VARCHAR(200),
+vote_average DOUBLE,
 watched BOOLEAN,
-PRIMARY KEY (id)
+PRIMARY KEY (id),
+UNIQUE KEY (video_id)
 )
 
 -- Year - Date
