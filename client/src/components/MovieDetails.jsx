@@ -20,7 +20,7 @@ class MovieDetails extends React.Component {
   render() {
     return (
       <div className="movie-details">
-        <div><img src={`${config.BASE_URL}w185/${this.props.movie.poster_path}`} /></div>
+        <div><img src={config.BASE_IMG_URL + this.props.movie.poster_path} /></div>
         <ul>
           <li>Year: {this.props.movie.release_date.split('-')[0]}</li>
           <li>Metascore {this.props.movie.vote_average}</li>
