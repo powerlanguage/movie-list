@@ -37,25 +37,20 @@ app.post('/watched', (req, res) => {
 });
 
 app.post('/movie', (req, res) => {
-
-
-  var test = { title: 'Star Wars: The Last Jedi',
-  poster_path: '/xGWVjewoXnJhvxKW619cMzppJDQ.jpg',
-  original_title: 'Star Wars: The Last Jedi',
-  overview: 'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
-  release_date: '2017-12-13' }
-
-  db.post(test);
-
-  // TODO: Update saved info
-    // watched, etc
-  movieData.push(req.body);
-  res.status(201).end()
+  db.insertOne(req.body)
+    .then(() => res.status(201).end)
+    .catch(err => console.log(err));
 })
 
 app.get('/load', (req, res) => {
-  getNowPlaying(movies => {
-    db.insertMany(movies);
-    res.send('data loaded');
-  })
+  getNowPlaying()
+    .then(movies => {
+      db.insertMany(movies);
+    })
+    .then(() => {
+      res.send('data loaded');
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
