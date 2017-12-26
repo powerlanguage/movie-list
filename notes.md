@@ -16,6 +16,7 @@
 - React: 4 hrs
 - Express: 2hrs (large portion on Webpack)
 - API wrangling: 1.5hrs
+- DB and hooking it all up - 3.5hrs
 
 ## React
 
@@ -29,6 +30,8 @@
 - [ ] Need to think through state before starting - who should handle what?
 - [ ] How to handle item disappearing as soon as it is filtered
 - [ ] Filtered checkbox not updating until re render? - think it is to do with a subcomponent alreadying having rendered
+- [ ] State for subcomponents
+- [ ] Race conditions in state
 
 ## Node
 
