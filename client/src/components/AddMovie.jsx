@@ -24,9 +24,11 @@ class AddMovie extends React.Component {
   render(){
     return (
       <div className="add-movie">
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add movie title here"/>
-          <input type="submit" value="Add" />
+        <form className="form-inline" onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Movie title.."/>
+            <button type="submit" value="Add">Add</button>
+          </div>
         </form>
       </div>
     )

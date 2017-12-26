@@ -24,9 +24,6 @@ body {
   margin: 0;
 }
 
-.add-movie {
-
-}
 
 .movies .movie {
   padding: 20px 20px;
@@ -94,9 +91,12 @@ body {
   color: #da2626;
 }
 
+.add-movie {
+  margin: 10px 20px;
+}
 
 .filters {
-  padding: 10px 20px;
+  margin: 10px 20px;
 }
 
 .form-inline .form-group {
@@ -138,6 +138,10 @@ button {
     user-select: none;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.form-group .active {
+  background-color: #e6ecf0;
 }
 
 input:focus,

@@ -53,7 +53,6 @@ class MovieList extends React.Component {
   }
 
   toggleWatchedFilter(filter) {
-    console.log(filter);
     this.setState({watchedFilter: filter})
   }
 
@@ -92,7 +91,7 @@ class MovieList extends React.Component {
       <div className="container">
         <Title />
         <AddMovie onAddMovie={this.addMovie}/>
-        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter} clearFilters={this.clearFilters}/>
+        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter} clearFilters={this.clearFilters} watchedFilter={this.state.watchedFilter}/>
         {filteredMovies.length ? (
           <div className="movies">
             {filteredMovies.map((movie, index) =>

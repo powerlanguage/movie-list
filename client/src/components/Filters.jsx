@@ -26,15 +26,31 @@ class Filters extends React.Component {
   }
 
 
-  render() {return (
+  render() {
+    console.log(this.props.watchedFilter)
+    // extrapolate button classes from props
+    let watchedClass = ""
+    let toWatchClass = ""
+    let inputClass = "form-control"
+    if(this.props.watchedFilter === "watched") {
+      watchedClass += " active";
+    }
+    if(this.props.watchedFilter === "unwatched") {
+      toWatchClass += " active";
+    }
+    if(this.state.value) {
+      inputClass += " active";
+    }
+
+    return (
     <div className="filters">
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search..."/>
+          <input className={inputClass} type="text" value={this.state.value} onChange={this.handleChange} placeholder="Filter..."/>
         </div>
         <div className="form-group">
-          <button type="button" className="filter" onClick={() => this.props.onToggleFilter("watched")}>Watched</button>
-          <button type="button" className="filter" onClick={() => this.props.onToggleFilter("unwatched")}>To Watch</button>
+          <button type="button" className={watchedClass} onClick={() => this.props.onToggleFilter("watched")}>Watched</button>
+          <button type="button" className={toWatchClass} onClick={() => this.props.onToggleFilter("unwatched")}>To Watch</button>
           <button type="submit">Clear</button>
         </div>
       </form>
