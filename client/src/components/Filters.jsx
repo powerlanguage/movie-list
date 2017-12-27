@@ -27,7 +27,6 @@ class Filters extends React.Component {
 
 
   render() {
-    console.log(this.props.watchedFilter)
     // extrapolate button classes from props
     let watchedClass = ""
     let toWatchClass = ""

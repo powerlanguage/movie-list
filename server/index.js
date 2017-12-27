@@ -6,7 +6,6 @@ const movieAPI = require('../lib/movieAPI.js')
 const axios = require('axios');
 const db = require('../database/index.js');
 
-const localhost = 'http://127.0.0.1'
 const port = '3000'
 
 app.use(bodyParser.json());
@@ -40,8 +39,13 @@ app.post('/movie', (req, res) => {
   movieAPI.search(req.body.title)
     .then(results => {
       if(results.length) {
-        db.insertOne(results[0]);
-        console.log('Added', results[0].title)
+        db.insertOne(results[0])
+          .then(() => {
+            // nested promises like this does not seem good
+            console.log('Added', results[0].title);
+            res.status(201).end();
+          })
+          .catch(err => console.log(err));
       }
     })
     .catch(err => console.log(err))

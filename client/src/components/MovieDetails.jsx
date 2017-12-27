@@ -22,7 +22,6 @@ class MovieDetails extends React.Component {
   }
 
   render() {
-    console.log(this.state.watched);
     return (
       <div className="movie-details">
         <ul>
