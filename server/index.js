@@ -39,14 +39,11 @@ app.post('/movie', (req, res) => {
   movieAPI.search(req.body.title)
     .then(results => {
       if(results.length) {
-        db.insertOne(results[0])
-          .then(() => {
-            // nested promises like this does not seem good
-            console.log('Added', results[0].title);
-            res.status(201).end();
-          })
-          .catch(err => console.log(err));
+        return db.insertOne(results[0])
       }
+    })
+    .then(() => {
+      res.status(201).end();
     })
     .catch(err => console.log(err))
 })

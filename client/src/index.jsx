@@ -25,7 +25,13 @@ class MovieList extends React.Component {
   }
 
   componentDidMount(){
-    this.getMovies();
+    axios.get('/load')
+      .then(() => {
+        this.getMovies();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   getMovies(){
@@ -91,7 +97,12 @@ class MovieList extends React.Component {
       <div className="container">
         <Title />
         <AddMovie onAddMovie={this.addMovie}/>
-        <Filters onSearch={this.onSearch} onToggleFilter={this.toggleWatchedFilter} clearFilters={this.clearFilters} watchedFilter={this.state.watchedFilter}/>
+        <Filters
+          onSearch={this.onSearch}
+          onToggleFilter={this.toggleWatchedFilter}
+          clearFilters={this.clearFilters}
+          watchedFilter={this.state.watchedFilter}
+        />
         {filteredMovies.length ? (
           <div className="movies">
             {filteredMovies.map((movie, index) =>

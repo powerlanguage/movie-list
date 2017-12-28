@@ -32,4 +32,4 @@ client/.DS_Store
 
 lib/api_key.jsconfig.js
 config.js
-documentation/
+documentation/*
