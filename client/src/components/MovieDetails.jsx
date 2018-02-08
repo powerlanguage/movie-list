@@ -7,9 +7,9 @@ class MovieDetails extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      watched: this.props.movie.watched
-    }
+    // this.state = {
+    //   watched: this.props.movie.watched
+    // }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -17,8 +17,9 @@ class MovieDetails extends React.Component {
     event.preventDefault();
     this.props.toggleWatched(this.props.movie);
     // I think this pattern is incorrect,
-    // state should come from the top, not balancing it here
-    this.setState({watched: !this.props.movie.watched});
+    // state should come from the to!this.props.movie.watchedzp, not balancing it here
+    //const toggle = !this.props.movie.watched;
+    //this.setState({watched: toggle});
   }
 
   render() {
@@ -33,7 +34,7 @@ class MovieDetails extends React.Component {
                 <input
                   name="watched"
                   type="checkbox"
-                  checked={this.state.watched}
+                  checked={this.props.movie.watched}
                   onChange={this.handleInputChange}
                 />
             </form>
