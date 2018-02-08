@@ -18,7 +18,7 @@ body {
 
 .banner {
   text-align: center;
-  background-color: #009a64;
+  background-color: #563d7c;
   color: #fff;
   padding: 20px 0px;
   margin: 0;
@@ -44,8 +44,8 @@ body {
 .movie .watched {
   margin-left: 5px;
   display: inline-block;
-  color: #009a64;
-  border: 1px solid #009a64;
+  color: #7952b3;
+  border: 1px solid #7952b3;
   border-radius: 2px;
   padding: 2px;
   font-size: 0.8em;
